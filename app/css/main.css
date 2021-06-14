@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Mukta', sans-serif;
+}
+
+.container {
+    background-color: black;
+    width: 100%;
+}
+
+#card-gallery {
+    height: 100vh;
+    vertical-align: middle;
+    padding: 0 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gallery-card {
+    position: relative;
+    min-width: 50px;
+    height: 90%;
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+    transition: 0.7s;
+    margin: 0 20px;
+    flex: 1;
+}
+
+.gallery-card_active {
+    flex: 5;
+}
+
+.gallery-card__name {
+    font-size: 30px;
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+}
+
+.gallery-card__name_active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in 0.4s;
+}
+
+.gallery-card__name_light {
+    color: #ffffff;
+    text-shadow: 0 0 10px #000000;
+}
+
+.gallery-card__name_dark {
+    color: #000000;
+    text-shadow: 0 0 10px #ffffff;
+}
+
+@media(max-width: 960px) {
+    #card-gallery {
+        flex-direction: column;
+    }
+
+    .gallery-card {
+        width: 90%;
+        margin: 20px;
+        font-size: 20px;
+    }
+
+    .gallery-card_active {
+        flex: 10;
+    }
+}
