@@ -35,6 +35,7 @@ let CardGallery = (function() {
         document.querySelectorAll(Selectors.galleryCard).forEach(element => {
             element.addEventListener('mouseenter', onCardMouseenter);
             element.addEventListener('mouseleave', onCardMouseout);
+            element.addEventListener('click', onCardClick);
         });
     };
 
@@ -43,9 +44,20 @@ let CardGallery = (function() {
         this.querySelector(Selectors.galleryCardName).classList.add(ClassNames.galleryCardNameActive);
     }
 
-    function onCardMouseout(event) {
+    function onCardMouseout() {
         this.classList.remove(ClassNames.galleryCardActive);
         this.querySelector(Selectors.galleryCardName).classList.remove(ClassNames.galleryCardNameActive);
+    }
+    
+    function onCardClick() {
+        let activeCard = document.querySelector(`${Selectors.cardGalleryContainer} ${Selectors.galleryCardActive}`);
+        if (activeCard !== null) {
+            activeCard.classList.remove(ClassNames.galleryCardActive);
+            activeCard.querySelector(Selectors.galleryCardNameActive).classList.remove(ClassNames.galleryCardNameActive);
+        }
+        
+        this.classList.add(ClassNames.galleryCardActive);
+        this.querySelector(Selectors.galleryCardName).classList.add(ClassNames.galleryCardNameActive);
     }
     
     function createGalleryCard(imageUrl, cardTitle, style) {
